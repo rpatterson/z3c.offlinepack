@@ -1,29 +1,43 @@
-;-*- rST -*-
-
 ==================
 Pack ZODBs Offline
 ==================
 
 Pack a ZODB storage without running any part of the Zope application
-server.  Only an appropriate version of Zope for the ZODB storage is
-required.  Use on a copy of a ZODB storage.  Do not run on a ZODB
-storage currently in use.
+server.  Only an appropriate version of ZODB3 for the ZODB storage is
+required.  Apply only to copies of ZODB storages, not ZODB storages
+currently in use.
 
-Install the distribution:
+Install the distribution::
 
   $ python setup.py install
 
-Then use the offlinepack script to pack a copy of your ZODB:
+Then use the offlinepack script to pack a copy of your ZODB::
 
   $ offlinepack /path/to/Data-copy.fs
+
+Use the --help option for more details::
+
+  $ offlinepack --help
+  usage: offlinepack [options] PATH...
+  
+  Pack ZODB storages without running Zope or ZEO
+  
+  options:
+    -h, --help            show this help message and exit
+    -d DAYS, --days=DAYS  remove revisions more than DAYS old [default: 0]
+    -s DOTTED, --storage=DOTTED
+                          use the storage constructor at DOTTED [default:
+                          ZODB.FileStorage.FileStorage]
 
 zc.buildout
 -----------
 
 A buildout.cfg is included that will install the offlinepack script
 to the buildout.  The buildout makes it possible to quickly use the
-offlinepack script without modifying your python installation.
+offlinepack script without modifying the system python installation::
 
+  $ svn co svn://svn.zope.org/repos/main/z3c.offlinepack/trunk z3c.offlinepack
+  $ cd z3c.offlinepack
   $ python bootsrtap/bootsrtap.py -v
   $ bin/buildout -v
   $ bin/offlinepack /path/to/Data-copy.fs
