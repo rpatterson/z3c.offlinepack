@@ -6,7 +6,7 @@ def read(filename):
                              filename)).read() + "\n\n"
 
 
-version = '0.2'
+version = '0.3'
 
 
 setup(name='z3c.offlinepack',

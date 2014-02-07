@@ -2,8 +2,10 @@
  Change log
 ============
 
-0.3 (unreleased)
+0.3 (2014-02-07)
 ----------------
+
+- Move to GitHub.
 
 - Added missing ``zope.testing`` test depenency declaration.
 
